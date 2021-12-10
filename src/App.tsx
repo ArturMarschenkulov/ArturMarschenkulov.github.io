@@ -1,24 +1,30 @@
 import React from 'react';
+import * as SC from "styled-components";
 import logo from './logo.svg';
 import './App.css';
+import Test from './Test2/Test2';
 
+/** Contventions
+ * Styles Components always have the "SC_" prefix.
+ *
+ */
+
+const SC_GlobalCSS = SC.createGlobalStyle`
+  body {
+    margin: 0;
+    font-family: "Times New Roman";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  code {
+    font-family: Georgia, serif;
+  }
+`
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SC_GlobalCSS/>
+      <Test/>
     </div>
   );
 }
