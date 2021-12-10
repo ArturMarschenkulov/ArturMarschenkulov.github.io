@@ -1,5 +1,5 @@
 import * as Router from "react-router-dom";
-import SC from "styled-components";
+import styled from "styled-components";
 
 
 import logo from './../../logo.svg'
@@ -11,7 +11,7 @@ type LinkProps = {
 }
 
 function Link(props: LinkProps) {
-  const SC_Link = SC.a`
+  const SC_Link = styled.a`
     color: #61dafb;
     text-decoration: none;
   `;
@@ -29,11 +29,11 @@ function Link(props: LinkProps) {
 
 
 export default function Home() {
-  const SC_App = SC.div`
+  const SC_App = styled.div`
     text-align: center;
   `;
-  const SC_AppHeader = SC.header`
-    background-color: #7b8574;
+  const SC_AppHeader = styled.header`
+    background-color: #5c5956;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -42,21 +42,29 @@ export default function Home() {
     font-size: calc(10px + 2vmin);
     color: white;
   `;
-  const SC_AppLogo = SC.img`
+  const SC_AppLogo = styled.img`
     height: 40vmin;
     pointer-events: none;
   `;
-  
+
   return (
     <SC_App>
       <SC_AppHeader>
         <SC_AppLogo src={logo} className="App-logo" alt="logo"/>
         <p> 
-          This is the <code>beginning</code>.
+          This is the homepage of Artur Marschenkulov.
         </p>
         <Link 
-          text="Learn React + Typescript"
+          text="Github"
           link="https://github.com/ArturMarschenkulov"
+        />
+        <Link 
+          text="LinkedIn"
+          link="https://www.linkedin.com/in/artur-marschenkulov-9897b3210/"
+        />
+        <Link 
+          text="Xing"
+          link="https://www.xing.com/profile/Artur_Marschenkulov"
         />
       </SC_AppHeader>
     </SC_App>

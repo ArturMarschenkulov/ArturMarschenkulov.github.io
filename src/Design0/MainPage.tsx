@@ -1,12 +1,16 @@
 import * as Router from "react-router-dom";
-import SC from "styled-components";
+import styled from "styled-components";
 
 import Home  from "./pages/Home";
 
 
-export default function MainPage(props: {pageStart: number;}) {
+type MainPageProps = {
+  pageStart: number;
+}
+
+export default function MainPage(props: MainPageProps) {
  
-  const SC_MainPage = SC.div`
+  const SC_MainPage = styled.div`
     margin: 0;
     border: 0;
     padding: 0px;
@@ -19,9 +23,10 @@ export default function MainPage(props: {pageStart: number;}) {
   `;
   return(
     <Router.Routes>
-      {/* <SC_MainPage> */}
-        <Router.Route  path='/' element={<Home/>} />
-      {/* </SC_MainPage> */}
+      <Router.Route  path='/' element={<Home/>} />
+      <Router.Route  path='/home' element={<Home/>} />
+      <Router.Route  path='/proj' element={<Home/>} />
+      <Router.Route  path='/about' element={<Home/>} />
     </Router.Routes>
   );
 }
