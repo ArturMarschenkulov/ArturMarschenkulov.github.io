@@ -2,15 +2,15 @@ import * as React from "react";
 import * as Router from "react-router-dom";
 //import * as Styled from "styled-components";
 import styled from "styled-components";
-import logo from "./../logo.svg";
+import logo from "assets/logo.svg";
 import {sideBarData, SideBarDataType} from "./SideBarData"
 
-type StyledLinkProps = {
+type ScLinkProps = {
   color: string,
   indent: number,
 };
 
-const StyledLink = styled(Router.Link) <StyledLinkProps>`
+const ScLink = styled(Router.Link) <ScLinkProps>`
   margin: 0;
   padding: 0;
   font-size: 1rem;
@@ -28,7 +28,7 @@ const StyledLink = styled(Router.Link) <StyledLinkProps>`
   //max-width: 100%;
   filter: brightness(1);
   &:hover {
-    color: green;
+    color: gold;
     filter: brightness(1.5);
   }
 `;
@@ -41,43 +41,47 @@ type NavItemProps = {
   indent: number;
   children?: React.ReactNode[];
 }
-function NavItem(props: NavItemProps) {
+
+function getAmountOfChildren(x?: React.ReactNode[]): number {
+  return (x !== undefined && x !== null) 
+    ? x?.length 
+    : 0
+  ;
+}
+
+function NavItem(props: NavItemProps): JSX.Element {
   const [isClicked, setIsClicked] = React.useState(false);
-  const color
+  const color: string
     = (isClicked === true)
       ? "#272727"
       : props.color
     ;
-  const amountOfChildren
-    = (props.children !== undefined && props.children !== null)
-      ? props.children?.length
-      : 0
-    ;
+  const amountOfChildren: number = getAmountOfChildren(props.children);
 
   if (amountOfChildren > 0 && isClicked === true) {
     return (
       <div>
-        <StyledLink
+        <ScLink
           to={props.to}
           color={color}
           indent={props.indent}
           onClick={() => setIsClicked(!isClicked)}
         >
           {props.text}
-        </StyledLink>
+        </ScLink>
         {props.children}
       </div>
     );
   } else {
     return (
-      <StyledLink
+      <ScLink
         to={props.to}
         color={color}
         indent={props.indent}
         onClick={() => setIsClicked(!isClicked)}
       >
         {props.text}
-      </StyledLink>
+      </ScLink>
 
     );
 

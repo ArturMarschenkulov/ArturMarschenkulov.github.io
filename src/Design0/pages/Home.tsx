@@ -1,72 +1,56 @@
 import * as Router from "react-router-dom";
 import styled from "styled-components";
 
-
-import logo from './../../logo.svg'
-
-
 type LinkProps = {
   text: string;
   link: string;
 }
-
 function Link(props: LinkProps) {
-  const SC_Link = styled.a`
+  const ScLink = styled.a`
     color: #61dafb;
     text-decoration: none;
   `;
   return (
-    <SC_Link
+    <ScLink
       className="App-link"
-      href= {props.link}
+      href={props.link}
       target="_blank"
       rel="noopener noreferrer"
     >
       {props.text}
-    </SC_Link>
+    </ScLink>
   );
 }
 
 
 export default function Home() {
-  const SC_App = styled.div`
-    text-align: center;
-  `;
-  const SC_AppHeader = styled.header`
-    background-color: #5c5956;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  `;
-  const SC_AppLogo = styled.img`
-    height: 40vmin;
-    pointer-events: none;
-  `;
 
+
+  const ScAccountListing = styled.div`
+    display: grid;
+    /* flex-direction: column; */
+    align-content: normal;
+    justify-content: start;
+  `;
   return (
-    <SC_App>
-      <SC_AppHeader>
-        <SC_AppLogo src={logo} className="App-logo" alt="logo"/>
-        <p> 
-          This is the homepage of Artur Marschenkulov.
-        </p>
-        <Link 
+    <div>
+      <p>
+        This is the homepage of Artur Marschenkulov.
+      </p>
+      <ScAccountListing>
+        <Link
           text="Github"
           link="https://github.com/ArturMarschenkulov"
         />
-        <Link 
+        <Link
           text="LinkedIn"
           link="https://www.linkedin.com/in/artur-marschenkulov-9897b3210/"
         />
-        <Link 
+        <Link
           text="Xing"
           link="https://www.xing.com/profile/Artur_Marschenkulov"
         />
-      </SC_AppHeader>
-    </SC_App>
+      </ScAccountListing>
+    </div>
   );
 }
