@@ -1,4 +1,3 @@
-import { type } from "os";
 import * as Router from "react-router-dom";
 import styled from "styled-components";
 
@@ -8,7 +7,7 @@ import Tetris from "./pages/tetris/Tetris";
 
 
 type MainBodyProps = {
-  pageStart: number;
+  //pageStart: number;
 }
 
 export default function MainBody(props: MainBodyProps) {
@@ -16,53 +15,40 @@ export default function MainBody(props: MainBodyProps) {
   const ScApp = styled.div`
     text-align: center;
   `;
-  const ScMainBody = styled.div`
+  const ScMainBody2 = styled.div`
     /* Position of the Body */
+    text-align: center;
     margin: 0px;
     border: 0px solid black;
     padding: 0px;
     position: absolute;
-    left: ${props.pageStart}%;
-    height: 100%;
-    width: ${100 - props.pageStart}%;
-    
+    height: 100%;    
     /* Content */
-    justify-content: center;
-    justify-items: center; 
     display: flex;
+    flex-grow: 1;
+    text-rendering: optimizeLegibility;
+    /* justify-content: center; */
+    /* justify-items: center;  */
     color: white;
     background-color: #2f2f2f;
     font-size: calc(10px + 2vmin);
   `;
-
-
-  // const ScAppHeader = styled.header`
-  //   background-color: #363631;
-  //   min-height: 100vh;
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: start;
-  //   justify-content: start;
-  //   font-size: calc(10px + 2vmin);
-  //   color: white;
-  // `;	
-  // const ScAppLogo = styled.img`
-  //   height: 40vmin;
-  //   pointer-events: none;
-  // `;
+  const ScMainBody = styled.div`
+    //background-color: #f10000;
+    background-color: #E3E0DD;
+    width: 100%;
+  `;
   return (
-    <ScApp>
-      <ScMainBody>
-        {/* <ScAppHeader> */}
-          <Router.Routes>
-            <Router.Route path='/' element={<Home />} />
-            <Router.Route path='/home' element={<Home />} />
-            <Router.Route path='/projects' element={<Projects />} />
-            <Router.Route path='/projects/games/tetris' element={<Tetris />} />
-            <Router.Route path='/about' element={<Home />} />
-          </Router.Routes>
-        {/* </ScAppHeader> */}
-      </ScMainBody>
-    </ScApp>
+    // <ScApp>
+    <ScMainBody>
+      <Router.Routes>
+        <Router.Route path='/' element={<Home />} />
+        <Router.Route path='/home' element={<Home />} />
+        <Router.Route path='/projects' element={<Projects />} />
+        <Router.Route path='/projects/games/tetris' element={<Tetris />} />
+        <Router.Route path='/about' element={<Home />} />
+      </Router.Routes>
+    </ScMainBody>
+    // </ScApp>
   );
 }

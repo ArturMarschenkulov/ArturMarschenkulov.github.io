@@ -18,7 +18,27 @@ const ScDisplay = styled.div`
 
 
 export default function Tetris() {
+  const ScTetrisBody = styled.div`
+    //margin: 0px;
+    //border: 0px solid black;
+    padding: 10px;
+    //position: absolute;
+    //height: 100%;
+    //width: 100%;
+
+    //display: flex;
+    //justify-content: center;
+    //justify-items: center; 
+    color: #7e7e7e;
+    //background-color: #2f2f2f;
+    font-size: calc(10px + 2vmin);
+  `;
   return (
-    <ScDisplay />      
+    <ScTetrisBody>
+      <header>
+        Tetris
+      </header>
+      <ScDisplay /> 
+    </ScTetrisBody>   
   );
 }
