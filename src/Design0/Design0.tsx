@@ -10,11 +10,13 @@ function TopBar(): JSX.Element {
   const ScTopBar = styled.nav`
     display: flex;
     width: 100%;
+    color: white;
     background-color: #000000;
-    padding: 0px;
-    position: fixed;
-    height: 10px;
-    top: 0;
+    position: sticky;
+    
+    //padding: 0px;
+    //height: 10px;
+    //top: 0;
 
     z-index: 2;
     
@@ -51,10 +53,10 @@ export default class Design0 extends React.Component {
     `;
 
     const ScMain = styled.div`
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      box-sizing: border-box;
+      //display: flex;
+      //flex-direction: column;
+      //min-height: 100%;
+      //box-sizing: border-box;
     `;
     return (
       <Router.BrowserRouter>

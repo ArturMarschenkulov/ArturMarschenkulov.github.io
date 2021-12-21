@@ -34,12 +34,12 @@ export default function Home() {
   `;
 
   const accounts: [string, string][] = [
-    ["Github",      "https://github.com/ArturMarschenkulov"],
-    ["LinkedIn",    "https://www.linkedin.com/in/artur-marschenkulov-a8a8b8b4/"],
-    ["Xing",        "https://www.xing.com/profile/Artur_Marschenkulov/"],
-    ["Leetcode",    "https://leetcode.com/ArturMarschenkulov/"],
-    ["Codewars",    "https://www.codewars.com/users/ArturMarschenkulov"],
-    ["Hackerrank",  "https://www.hackerrank.com/ArturMarschals"]
+    ["Github", "https://github.com/ArturMarschenkulov"],
+    ["LinkedIn", "https://www.linkedin.com/in/artur-marschenkulov-a8a8b8b4/"],
+    ["Xing", "https://www.xing.com/profile/Artur_Marschenkulov/"],
+    ["Leetcode", "https://leetcode.com/ArturMarschenkulov/"],
+    ["Codewars", "https://www.codewars.com/users/ArturMarschenkulov"],
+    ["Hackerrank", "https://www.hackerrank.com/ArturMarschals"]
   ];
 
 
