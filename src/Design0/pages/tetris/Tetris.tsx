@@ -124,7 +124,7 @@ type CellProps = {
 function Cell(props: CellProps): JSX.Element {
   const size = props.size;
 
-  const ScCell = styled('div', "kk")`
+  const ScCell = styled.div`
     width: ${size}px;
     height: ${size}px;
     width: auto;
