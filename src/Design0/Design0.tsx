@@ -35,6 +35,7 @@ function Footer(): JSX.Element {
     box-sizing: border-box;
     background-color: #2b7495;
     padding: 10 10;
+    height: 100%;
   `;
 
   return (
