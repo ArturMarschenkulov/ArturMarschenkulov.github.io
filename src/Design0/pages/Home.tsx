@@ -1,52 +1,58 @@
-import * as Router from "react-router-dom";
+import { FC } from "react";
 import styled from "styled-components";
+import { Link as RouterLink } from "react-router-dom";
+
+const ScLink = styled(RouterLink)`
+  color: #61dafb;
+  text-decoration: none;
+`;
+
+const ScAccountListing = styled.div`
+  display: grid;
+`;
 
 type LinkProps = {
   text: string;
-  link: string;
+  linkTo: string;
 };
-function Link(props: LinkProps) {
-  const ScLink = styled.a`
-    color: #61dafb;
-    text-decoration: none;
-  `;
-  return (
-    <ScLink
-      className="App-link"
-      href={props.link}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {props.text}
-    </ScLink>
-  );
-}
 
-export default function Home() {
-  const ScAccountListing = styled.div`
-    display: grid;
-    /* flex-direction: column; */
-    //align-content: normal;
-    //justify-content: start;
-  `;
+const Link: FC<LinkProps> = ({ text, linkTo }) => (
+  <ScLink to={linkTo} target="_blank" rel="noopener noreferrer">
+    {text}
+  </ScLink>
+);
 
-  const accounts: [string, string][] = [
-    ["Github", "https://github.com/ArturMarschenkulov"],
-    ["LinkedIn", "https://www.linkedin.com/in/artur-marschenkulov-a8a8b8b4/"],
-    ["Xing", "https://www.xing.com/profile/Artur_Marschenkulov/"],
-    ["Leetcode", "https://leetcode.com/ArturMarschenkulov/"],
-    ["Codewars", "https://www.codewars.com/users/ArturMarschenkulov"],
-    ["Hackerrank", "https://www.hackerrank.com/ArturMarschals"],
-  ];
+type Account = {
+  name: string;
+  url: string;
+};
 
-  let links: JSX.Element[] = [];
-  for (let i = 0; i < accounts.length; i++) {
-    links.push(<Link text={accounts[i][0]} link={accounts[i][1]} />);
-  }
+const accounts: Account[] = [
+  { name: "Github", url: "https://github.com/ArturMarschenkulov" },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/artur-marschenkulov-a8a8b8b4/",
+  },
+  { name: "Xing", url: "https://www.xing.com/profile/Artur_Marschenkulov/" },
+  { name: "Leetcode", url: "https://leetcode.com/ArturMarschenkulov/" },
+  {
+    name: "Codewars",
+    url: "https://www.codewars.com/users/ArturMarschenkulov",
+  },
+  { name: "Hackerrank", url: "https://www.hackerrank.com/ArturMarschals" },
+];
+
+const Home: FC = () => {
+  const links = accounts.map((account, index) => (
+    <Link key={index} text={account.name} linkTo={account.url} />
+  ));
+
   return (
     <div>
       <p>This is the homepage of Artur Marschenkulov.</p>
       <ScAccountListing>{links}</ScAccountListing>
     </div>
   );
-}
+};
+
+export default Home;
