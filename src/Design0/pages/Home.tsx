@@ -4,7 +4,7 @@ import styled from "styled-components";
 type LinkProps = {
   text: string;
   link: string;
-}
+};
 function Link(props: LinkProps) {
   const ScLink = styled.a`
     color: #61dafb;
@@ -22,10 +22,7 @@ function Link(props: LinkProps) {
   );
 }
 
-
 export default function Home() {
-
-
   const ScAccountListing = styled.div`
     display: grid;
     /* flex-direction: column; */
@@ -39,22 +36,17 @@ export default function Home() {
     ["Xing", "https://www.xing.com/profile/Artur_Marschenkulov/"],
     ["Leetcode", "https://leetcode.com/ArturMarschenkulov/"],
     ["Codewars", "https://www.codewars.com/users/ArturMarschenkulov"],
-    ["Hackerrank", "https://www.hackerrank.com/ArturMarschals"]
+    ["Hackerrank", "https://www.hackerrank.com/ArturMarschals"],
   ];
 
-
   let links: JSX.Element[] = [];
-  for(let i = 0; i < accounts.length; i++) {
+  for (let i = 0; i < accounts.length; i++) {
     links.push(<Link text={accounts[i][0]} link={accounts[i][1]} />);
   }
   return (
     <div>
-      <p>
-        This is the homepage of Artur Marschenkulov.
-      </p>
-      <ScAccountListing>
-        {links}
-      </ScAccountListing>
+      <p>This is the homepage of Artur Marschenkulov.</p>
+      <ScAccountListing>{links}</ScAccountListing>
     </div>
   );
 }

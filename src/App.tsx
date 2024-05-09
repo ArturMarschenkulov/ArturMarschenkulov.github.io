@@ -1,4 +1,4 @@
-import Design0 from './Design0/Design0';
+import Design0 from "./Design0/Design0";
 
 /** Contventions
  * Styles Components always have the "SC_" prefix.
@@ -7,7 +7,7 @@ import Design0 from './Design0/Design0';
 function App() {
   return (
     <div className="App">
-      <Design0/>
+      <Design0 />
     </div>
   );
 }

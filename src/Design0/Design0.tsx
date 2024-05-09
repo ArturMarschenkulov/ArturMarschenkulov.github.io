@@ -5,7 +5,6 @@ import styled from "styled-components";
 import MainBody from "./MainBody";
 import SideBar from "./SideBar";
 
-
 function TopBar(): JSX.Element {
   const ScTopBar = styled.nav`
     display: flex;
@@ -13,20 +12,16 @@ function TopBar(): JSX.Element {
     color: white;
     background-color: #000000;
     position: sticky;
-    
+
     //padding: 0px;
     //height: 10px;
     //top: 0;
 
     z-index: 2;
-    
+
     flex-direction: row;
   `;
-  return (
-    <ScTopBar>
-      Top Bar
-    </ScTopBar>
-  );
+  return <ScTopBar>Top Bar</ScTopBar>;
 }
 
 function Footer(): JSX.Element {
@@ -38,11 +33,7 @@ function Footer(): JSX.Element {
     height: 100%;
   `;
 
-  return (
-    <ScFooter>
-      Footer
-    </ScFooter>
-  );
+  return <ScFooter>Footer</ScFooter>;
 }
 export default class Design0 extends React.Component {
   render(): JSX.Element {

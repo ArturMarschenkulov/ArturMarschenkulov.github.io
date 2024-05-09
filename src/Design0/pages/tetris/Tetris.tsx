@@ -1,8 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Board from './components/Board';
-
-
+import React from "react";
+import styled from "styled-components";
+import Board from "./components/Board";
 
 //RGBAColor class which goes from 0 to 255
 class RGBAColor {
@@ -17,10 +15,14 @@ class RGBAColor {
     this.a = a;
   }
   toHEX6(): string {
-    return `#${this.r.toString(16)}${this.g.toString(16)}${this.b.toString(16)}`;
+    return `#${this.r.toString(16)}${this.g.toString(16)}${this.b.toString(
+      16
+    )}`;
   }
   toHEX8(): string {
-    return `#${this.r.toString(16)}${this.g.toString(16)}${this.b.toString(16)}${this.a.toString(16)}`;
+    return `#${this.r.toString(16)}${this.g.toString(16)}${this.b.toString(
+      16
+    )}${this.a.toString(16)}`;
   }
   toRGB(): string {
     return `rgb(${this.r},${this.g},${this.b})`;
@@ -29,12 +31,10 @@ class RGBAColor {
     return `rgba(${this.r},${this.g},${this.b},${this.a})`;
   }
 
-  copy(): RGBAColor { 
+  copy(): RGBAColor {
     return new RGBAColor(this.r, this.g, this.b, this.a);
   }
 }
-
-
 
 // function toRGB(color: string): string {
 
@@ -45,8 +45,6 @@ class RGBAColor {
 //   return `${r}, ${g}, ${b}`;
 // }
 
-
-
 enum TetrominoType {
   I,
   J,
@@ -55,9 +53,8 @@ enum TetrominoType {
   S,
   T,
   Z,
-  Empty
+  Empty,
 }
-
 
 // function toColor(type: TetrominoType): RGBAColor {
 //   switch (type) {
@@ -79,11 +76,6 @@ enum TetrominoType {
 //   }
 // }
 
-
-
-
-
-
 export default function Tetris() {
   const ScTetrisBody = styled.div`
     padding: 10px;
@@ -93,10 +85,8 @@ export default function Tetris() {
   `;
   return (
     <ScTetrisBody>
-      <header>
-        Tetris
-      </header>
-      <Board/>
-    </ScTetrisBody>   
+      <header>Tetris</header>
+      <Board />
+    </ScTetrisBody>
   );
 }
