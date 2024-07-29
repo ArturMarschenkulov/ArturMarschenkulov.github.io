@@ -1,5 +1,3 @@
-import React from "react";
-import styled from "styled-components";
 import Board from "./components/Board";
 
 //RGBAColor class which goes from 0 to 255
@@ -77,16 +75,10 @@ enum TetrominoType {
 // }
 
 export default function Tetris() {
-  const ScTetrisBody = styled.div`
-    padding: 10px;
-    color: #2c2828;
-    //background-color: #2f2f2f;
-    font-size: calc(10px + 2vmin);
-  `;
   return (
-    <ScTetrisBody>
-      <header>Tetris</header>
+    <div className="p-2.5 text-[#2c2828] font-sans text-[calc(10px + 2vmin)] bg-[#2f2f2f]">
+      <header className="font-bold">Tetris</header>
       <Board />
-    </ScTetrisBody>
+    </div>
   );
 }

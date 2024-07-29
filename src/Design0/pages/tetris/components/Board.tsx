@@ -1,17 +1,14 @@
-import styled from "styled-components";
-
 type CellProps = {
   size: number;
 };
 
 function Cell(props: CellProps): JSX.Element {
-  const ScCell = styled.div`
-    width: ${props.size}px;
-    height: ${props.size}px;
-    width: auto;
-    background: #ffffff21;
-  `;
-  return <ScCell />;
+  return (
+    <div
+      style={{ width: `${props.size}px`, height: `${props.size}px` }}
+      className="bg-[#ffffff21]"
+    />
+  );
 }
 
 export default function Board(): JSX.Element {
@@ -21,19 +18,6 @@ export default function Board(): JSX.Element {
   const boardHeight = 16;
   const gapSize = 1;
 
-  const ScBoard = styled.div`
-    display: grid;
-    grid-gap: ${gapSize}px;
-    grid-template-columns: repeat(${boardWidth}, ${tetrominoSize}px);
-    grid-template-rows: repeat(${boardHeight}, ${tetrominoSize}px);
-    width: ${boardWidth * tetrominoSize + gapSize * (boardWidth - 1)}px;
-    height: ${boardHeight * tetrominoSize + gapSize * (boardHeight - 1)}px;
-    background: #000000;
-    z-index: 5;
-    border: 4px solid #777;
-    border-radius: 5px;
-  `;
-
   const cells: JSX.Element[][] = [];
   for (let i = 0; i < boardHeight; i++) {
     cells[i] = [];
@@ -41,5 +25,16 @@ export default function Board(): JSX.Element {
       cells[i][j] = <Cell size={tetrominoSize} />;
     }
   }
-  return <ScBoard>{cells}</ScBoard>;
+  const boardStyle = {
+    width: `${boardWidth * tetrominoSize + gapSize * (boardWidth - 1)}px`,
+    height: `${boardHeight * tetrominoSize + gapSize * (boardHeight - 1)}px`,
+  };
+  return (
+    <div
+      style={boardStyle}
+      className={`grid grid-cols-${boardWidth} gap-${gapSize} bg-black z-5 border-4 border-gray-700 rounded-lg`}
+    >
+      {cells}
+    </div>
+  );
 }

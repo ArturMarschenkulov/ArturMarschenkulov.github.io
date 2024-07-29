@@ -1,37 +1,7 @@
 import * as React from "react";
 import * as Router from "react-router-dom";
-//import * as Styled from "styled-components";
-import styled from "styled-components";
 import logo from "assets/logo.svg";
 import { sideBarData, SideBarDataType } from "./SideBarData";
-
-type ScLinkProps = {
-  color: string;
-  indent: number;
-};
-
-const ScLink = styled(Router.Link)<ScLinkProps>`
-  margin: 0;
-  padding: 0;
-  font-size: 1rem;
-  line-height: 2rem;
-  color: white;
-  display: block;
-  border-bottom: 1px solid #282828;
-  background-color: ${(props) => props.color};
-  box-sizing: border-box;
-  width: 100%;
-  transition: filter 300ms;
-  transition: color 300ms;
-  text-align: left;
-  padding-left: ${(props) => props.indent / 2 + 0.5}rem;
-  //max-width: 100%;
-  filter: brightness(1);
-  &:hover {
-    color: gold;
-    filter: brightness(1.5);
-  }
-`;
 
 type NavItemProps = {
   //isOpen: boolean;
@@ -51,32 +21,20 @@ function NavItem(props: NavItemProps): JSX.Element {
   const color: string = isClicked === true ? "#272727" : props.color;
   const amountOfChildren: number = getAmountOfChildren(props.children);
 
-  if (amountOfChildren > 0 && isClicked === true) {
-    return (
-      <div>
-        <ScLink
-          to={props.to}
-          color={color}
-          indent={props.indent}
-          onClick={() => setIsClicked(!isClicked)}
-        >
-          {props.text}
-        </ScLink>
-        {props.children}
-      </div>
-    );
-  } else {
-    return (
-      <ScLink
+  return (
+    <div>
+      <Router.Link
         to={props.to}
-        color={color}
-        indent={props.indent}
+        className={`block w-full text-white border-b border-gray-800 py-2 px-${
+          props.indent / 2 + 2
+        } transition duration-300 ease-in-out hover:text-gold hover:brightness-150 ${color}`}
         onClick={() => setIsClicked(!isClicked)}
       >
         {props.text}
-      </ScLink>
-    );
-  }
+      </Router.Link>
+      {isClicked && props.children}
+    </div>
+  );
 }
 
 function sideBarDataTypeToChildren(
@@ -111,36 +69,16 @@ type SideBarProps = {
 };
 
 export default function SideBar(props: SideBarProps) {
-  const ScSideBar2 = styled("div")<SideBarProps>`
-    margin: 0;
-    padding: 0px;
-    position: fixed;
-    height: 100vh;
-    background-color: ${(props) => props.color};
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  `;
-
-  const ScSideBar = styled("div")<SideBarProps>`
-    display: block;
-    box-sizing: border-box;
-    background-color: ${(props) => props.color};
-    width: 300px;
-    clip-path: inset(0px);
-    //margin-top: 10px;
-    z-index: auto;
-    position: static;
-    line-height: 26.4px;
-    border-right: 1px solid #bb9696;
-  `;
+  const bgColorClass = `bg-${props.color}`; // Construct a dynamic background color class
 
   return (
-    <ScSideBar color={props.color}>
-      <img src={logo} className="App-logo" alt="logo" style={{ width: 200 }} />
-      <nav style={{ width: "100%" }}>
+    <div
+      className={`fixed h-full w-300 ${bgColorClass} flex flex-col items-center z-auto`}
+    >
+      <img src={logo} alt="logo" className="w-50 mb-4" />
+      <nav className="w-full">
         {sideBarDataTypeToChildren(sideBarData, props)}
       </nav>
-    </ScSideBar>
+    </div>
   );
 }
