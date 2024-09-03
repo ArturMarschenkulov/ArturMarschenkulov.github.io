@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import RouterLink from "next/link";
+import * as React from "react";
+
+
 
 type Account = {
   name: string;
@@ -31,40 +33,35 @@ const projects: Project[] = [
   {
     name: "JadeFrame",
     description: "Short description A",
-    details:
-      "Long details about Project A including goals, technology used, and outcomes.",
+    details: "Long details about Project A including goals, technology used, and outcomes.",
   },
   {
     name: "Project B",
     description: "Short description B",
-    details:
-      "Long details about Project B including goals, technology used, and outcomes.",
+    details: "Long details about Project B including goals, technology used, and outcomes.",
   },
   {
     name: "Project B",
     description: "Short description B",
-    details:
-      "Long details about Project B including goals, technology used, and outcomes.",
+    details: "Long details about Project B including goals, technology used, and outcomes.",
   },
   {
     name: "Project B",
     description: "Short description B",
-    details:
-      "Long details about Project B including goals, technology used, and outcomes.",
+    details: "Long details about Project B including goals, technology used, and outcomes.",
   },
   {
     name: "Project B",
     description: "Short description B",
-    details:
-      "Long details about Project B including goals, technology used, and outcomes.",
+    details: "Long details about Project B including goals, technology used, and outcomes.",
   },
   {
     name: "Project B",
     description: "Short description B",
-    details:
-      "Long details about Project B including goals, technology used, and outcomes.",
+    details: "Long details about Project B including goals, technology used, and outcomes.",
   },
 ];
+
 
 type CardProps = {
   project: Project;
@@ -102,24 +99,15 @@ type LinkProps = {
 
 function Link(props: LinkProps) {
   const { text, linkTo } = props;
-  return (
-    <RouterLink
-      to={linkTo}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-black no-underline font-mono text-lg transition-colors duration-300 hover:text-gray-500 hover:underline"
-    >
-      {text}
-    </RouterLink>
-  );
+  return <RouterLink href={linkTo}>{text}</RouterLink>;
 }
 
-function Home() {
+export default function Home() {
   const links = accounts.map((account, index) => (
     <Link key={index} text={account.name} linkTo={account.url} />
   ));
 
-  const [expandedProject, setExpandedProject] = useState<string | null>(null);
+  const [expandedProject, setExpandedProject] = React.useState<string | null>(null);
 
   const handleCardClick = (projectName: string) => {
     if (expandedProject === projectName) {
@@ -140,9 +128,10 @@ function Home() {
   return (
     <div>
       <p>
-        This is the homepage of Artur Marschenkulov, specializing in low-level
-        and graphics programming.
+        This is the homepage of Artur Marschenkulov, specializing in low-level and graphics
+        programming.
       </p>
+
       <div className="grid grid-cols-3 gap-5 p-5 border-t-2 border-b-2 border-gray-300 mt-5 animate-fadeIn">
         {links}
       </div>
@@ -150,5 +139,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;

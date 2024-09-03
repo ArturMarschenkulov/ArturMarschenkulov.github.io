@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as Router from "react-router-dom";
-import logo from "assets/logo.svg";
+import RouterLink from "next/link";
+// import logo from "../assets/logo";
 import { sideBarData, SideBarDataType } from "./SideBarData";
 
 type NavItemProps = {
@@ -23,15 +23,15 @@ function NavItem(props: NavItemProps): JSX.Element {
 
   return (
     <div>
-      <Router.Link
-        to={props.to}
+      <RouterLink
+        href={props.to}
         className={`block w-full text-white border-b border-gray-800 py-2 px-${
           props.indent / 2 + 2
         } transition duration-300 ease-in-out hover:text-gold hover:brightness-150 ${color}`}
         onClick={() => setIsClicked(!isClicked)}
       >
         {props.text}
-      </Router.Link>
+      </RouterLink>
       {isClicked && props.children}
     </div>
   );
@@ -75,7 +75,7 @@ export default function SideBar(props: SideBarProps) {
     <div
       className={`fixed h-full w-300 ${bgColorClass} flex flex-col items-center z-auto`}
     >
-      <img src={logo} alt="logo" className="w-50 mb-4" />
+      {/* <img src={logo} alt="logo" className="w-50 mb-4" /> */}
       <nav className="w-full">
         {sideBarDataTypeToChildren(sideBarData, props)}
       </nav>
